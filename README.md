@@ -18,4 +18,9 @@ You will need:
 - A 12v fan - a 100mm PC case fan can work, however for faster temperature rise use a 100mm inline 12v bathroom extractor fan + metal ducting.
 - 12v powersupply
 
+## Questions
 
+Q) But this only brings the cooking area to 110c, surely that is too cold
+
+A) For low and slow cooking, 105c is perfect... You can shove a piece of meat into the smoker for 4 hours (on top of a water pan for condensation) and
+let it turn into some of the best meat you've ever had
