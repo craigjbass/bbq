@@ -6,7 +6,7 @@ int thermoCS = 6;
 int thermoCLK = 9;
 
 MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
-AF_DCMotor motor(1, MOTOR12_1KHZ); // create motor #2, 64KHz pwm
+AF_DCMotor motor(1, MOTOR12_1KHZ);
 
 void setup() {
   Serial.begin(9600);
@@ -19,6 +19,7 @@ void loop() {
    double currentTemp = thermocouple.readCelsius();
   
    beforeChangeMotor(currentTemp);
+   
    if(isAtCookingTemperature(currentTemp)) {
     stopMotor();
    } else if(isTooCold(currentTemp)) {
