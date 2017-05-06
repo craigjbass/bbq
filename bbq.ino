@@ -23,10 +23,25 @@ void loop() {
    if(isAtCookingTemperature(currentTemp)) {
     stopMotor();
    } else if(isTooCold(currentTemp)) {
-    startMotor();
+    heat();
    }
 
    delay(1000);
+}
+
+int secondsRunning = 0;
+int secondsToWait = 0;
+void heat() {
+  if(secondsRunning > 20) {
+    stopMotor();
+    secondsRunning = 0;
+    secondsToWait = 120;
+  } else if(secondsToWait <= 0) {
+    startMotor();  
+    secondsRunning++;
+  } else {
+    secondsToWait--;
+  }
 }
 
 void startMotor() {
