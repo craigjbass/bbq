@@ -22,7 +22,9 @@ void loop() {
    
    if(isAtCookingTemperature(currentTemp)) {
     stopMotor();
-   } else if(isTooCold(currentTemp)) {
+   } else if (isCold(currentTemp)) {
+    highOxygen();
+   } else if(isWarm(currentTemp)) {
     heat();
    }
 
@@ -44,6 +46,10 @@ void heat() {
   }
 }
 
+void highOxygen() {
+  startMotor();
+}
+
 void startMotor() {
   motor.run(BACKWARD);
 }
@@ -52,12 +58,19 @@ void stopMotor() {
   motor.run(RELEASE);
 }
 
-bool isTooCold(double temperature) {
-  return temperature < 110;
+const double WARM_FIRE_TEMPERATURE = 70;
+const double COOKING_TEMPERATURE = 110;
+
+bool isCold(double temperature) {
+  return temperature <= WARM_FIRE_TEMPERATURE;
+}
+
+bool isWarm(double temperature) {
+  return temperature < COOKING_TEMPERATURE && temperature > WARM_FIRE_TEMPERATURE;
 }
 
 bool isAtCookingTemperature(double temperature) {
-  return temperature >= 110;
+  return temperature >= COOKING_TEMPERATURE;
 }
 
 void beforeChangeMotor(double temperature) {
